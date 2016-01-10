@@ -5,7 +5,7 @@ dependencies:
     - sudo apt-get install libphysfs-dev
     - sudo luarocks install busted
     - sudo luarocks install luasec OPENSSL_LIBDIR=/usr/lib/x86_64-linux-gnu/
-    - sudo luarocks install luacov-coveralls --server=http://rocks.moonscript.org/dev
+    - sudo luarocks install luacov
     - curl -O https://bitbucket.org/bartbes/clua/get/default.tar.gz
     - mkdir -p dependencies/clua
     - tar xzf default.tar.gz -C dependencies/clua --strip-components 1
@@ -19,7 +19,8 @@ test:
     - mkdir $CIRCLE_TEST_REPORTS/busted
     - busted -c -o junit spec > $CIRCLE_TEST_REPORTS/busted/dilemma.xml
   post:
-    - luacov-coveralls -c spec/.luacov
+    - luacov -c=spec/.luacov
+    - bash <(curl -s https://codecov.io/bash)
     - zip -r dilemma.zip *.lua bootstrap lib
     - mkdir -p build/release/tmp
     - cat dependencies/clua/clua dilemma.zip > build/release/dilemma.bin
