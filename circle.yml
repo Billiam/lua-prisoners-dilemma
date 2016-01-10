@@ -4,9 +4,24 @@ dependencies:
     - sudo apt-get install luarocks
     - sudo luarocks install busted
     - sudo luarocks install luacov-coveralls --server=http://rocks.moonscript.org/dev
+    - curl -O https://bitbucket.org/bartbes/clua/get/default.tar.gz
+    - mkdir -p dependencies/clua
+    - tar xzf default.tar.gz -C dependencies/clua --strip-components 1
+    - cd dependencies/clua && ./autogen.sh && ./configure && make
+    - mkdir -p dependencies/squish
+    - curl -O http://matthewwild.co.uk/projects/squish/squish-0.2.0.tar.gz
+    - tar xzf squish-0.2.0.tar.gz -C dependencies/squish --strip-components 1
+    - cd dependencies/squish && make
 test:
   override:
     - mkdir $CIRCLE_TEST_REPORTS/busted
     - busted -c -o junit spec > $CIRCLE_TEST_REPORTS/busted/dilemma.xml
   post:
     - luacov-coveralls -c spec/.luacov
+    - zip -r dilemma.zip *.lua bootstrap lib
+    - mkdir -p build/release/tmp
+    - cat dependencies/clua/clua dilemma.zip > build/release/dilemma.bin
+    - cp README.md build/release
+    - cd build/release && zip -r $CIRCLE_ARTIFACTS/dilemma.zip *
+    - dependencies/squish/squish
+    - cp dilemma.lua $CIRCLE_ARTIFACTS

@@ -13,6 +13,6 @@ Module "lib.strategy.meta_strategy" "lib/strategy/meta_strategy.lua"
 Module "lib.actions" "lib/actions.lua"
 Module "lib.strategy.range_action" "lib/strategy/range_action.lua"
 
-Output "tmp/dilemma.lua"
+Output "dilemma.lua"
 Option "minify_level" "none"
 
