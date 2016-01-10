@@ -2,8 +2,9 @@ dependencies:
   pre:
     - sudo apt-get install luajit
     - sudo apt-get install luarocks
+    - sudo apt-get install libphysfs-dev
     - sudo luarocks install busted
-    - sudo luarocks install luasec
+    - sudo luarocks install luasec OPENSSL_LIBDIR=/usr/lib/x86_64-linux-gnu/
     - sudo luarocks install luacov-coveralls --server=http://rocks.moonscript.org/dev
     - curl -O https://bitbucket.org/bartbes/clua/get/default.tar.gz
     - mkdir -p dependencies/clua
