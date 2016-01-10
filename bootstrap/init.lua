@@ -5,6 +5,8 @@ local config = require('config')
 local Bootstrap = {}
 
 function Bootstrap.run(opponent, discipline, opponent_action, player_action)
+  assert(opponent, "opponent is required (usage: dilemma opponent_name discipline opponent_action player_action)")
+  
   local history = History.create(config.history_path)
   history:load()
   history:add_actions(opponent, opponent_action, player_action)
@@ -12,7 +14,7 @@ function Bootstrap.run(opponent, discipline, opponent_action, player_action)
 
   local result = strategy(history:round(opponent), config.total_rounds, history:log(opponent))
 
-  io.write(result)
+  io.write(result + "\n")
 end
 
 return function(...)
