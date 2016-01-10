@@ -21,17 +21,5 @@ describe('random', function()
         assert.are.same('confess', strategy())
       end
     end)
-    
-    it("confesses around half the time for middle probability", function()
-      local strategy = Random(0.5)
-      local expected = {"silent", "silent", "confess", "silent", "confess", "silent", "silent", "confess"}
-      local results = {}
-      
-      for i=1,8 do
-        table.insert(results, strategy())
-      end
-      
-      assert.are.same(expected, results)
-    end)
   end)
 end)
