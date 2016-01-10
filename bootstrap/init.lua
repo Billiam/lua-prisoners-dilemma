@@ -14,7 +14,7 @@ function Bootstrap.run(opponent, discipline, opponent_action, player_action)
 
   local result = strategy(history:round(opponent), config.total_rounds, history:log(opponent))
 
-  io.write(result + "\n")
+  io.write(result .. "\n")
 end
 
 return function(...)
