@@ -3,6 +3,7 @@ dependencies:
     - sudo apt-get install luajit
     - sudo apt-get install luarocks
     - sudo luarocks install busted
+    - sudo luarocks install luasec
     - sudo luarocks install luacov-coveralls --server=http://rocks.moonscript.org/dev
     - curl -O https://bitbucket.org/bartbes/clua/get/default.tar.gz
     - mkdir -p dependencies/clua
