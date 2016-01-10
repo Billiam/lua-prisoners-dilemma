@@ -1,4 +1,4 @@
 return {
   total_rounds = 100,
-  history_path = './tmp/.history.lua'
+  history_path = './.history.lua'
 }
