@@ -8,7 +8,7 @@
 	Only Saves Tables, Numbers and Strings
 	Insides Table References are saved
 	Does not save Userdata, Metatables, Functions and indices of these
-	----------------------------------------------------
+	--------------------------------------a--------------
 	table.save( table , filename )
 	
 	on failure: returns an error msg
@@ -24,7 +24,7 @@
 	
 	Licensed under the same terms as Lua itself.
 ]]--
-do
+(function()
 	-- declare local variables
 	--// exportstring( string )
 	--// returns a "Lua" portable version of the string
@@ -128,7 +128,5 @@ do
 		end
 		return tables[1]
 	end
--- close do
-end
-
+end)()
 -- ChillCode
