@@ -21,7 +21,7 @@ test:
   post:
     - luacov -c=spec/.luacov
     - bash <(curl -s https://codecov.io/bash)
-    - zip -r dilemma.zip *.lua bootstrap lib
+    - zip -r dilemma.zip *.lua bootstrap lib vendor
     - mkdir -p build/release
     - cat dependencies/clua/clua dilemma.zip > build/release/dilemma.bin
     - chmod a+x build/release/dilemma.bin
