@@ -23,7 +23,7 @@ describe('defects at the end', function()
       assert.is_nil(strategy(44, 50, {}))
     end)
     
-    it("cooperates for 5 rounds #broken", function()
+    it("defects for 5 rounds", function()
       assert.are.same('confess', strategy(46, 50, {}))
       assert.are.same('confess', strategy(47, 50, {}))
       assert.are.same('confess', strategy(48, 50, {}))
