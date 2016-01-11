@@ -5,4 +5,4 @@ local nice = require('lib.strategy.nice')
 
 local meta_strategy = require('lib.strategy.meta_strategy')
 
-return meta_strategy(Forgive(10), Revenge(), DefectLast(), nice)
+return meta_strategy(DefectLast(), Forgive(10), Revenge(), nice)
