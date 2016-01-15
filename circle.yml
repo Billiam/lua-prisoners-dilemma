@@ -7,5 +7,5 @@ dependencies:
 test:
   override:
     - circleci-matrix:
-      parallel: true
+        parallel: true
 
