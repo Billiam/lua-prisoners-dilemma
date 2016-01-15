@@ -1,4 +1,5 @@
 local MetaStrategy = require('lib.strategy.meta_strategy')
+local unpack = rawget(_G,'unpack') or rawget(table,'unpack')
 
 describe('meta strategy', function()
   it("passes arguments to all strategies", function()

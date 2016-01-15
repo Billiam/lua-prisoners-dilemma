@@ -1,15 +1,11 @@
 dependencies:
   pre:
-    - sudo apt-get install luajit
-    - sudo apt-get install luarocks
-    - sudo apt-get install libphysfs-dev
-    - sudo luarocks install busted
-    - sudo luarocks install luasec OPENSSL_LIBDIR=/usr/lib/x86_64-linux-gnu/
-    - sudo luarocks install luacov
+    # Install circleci-matrix
+    - mkdir -p ~/.local/bin
+    - curl -fsSL https://raw.githubusercontent.com/michaelcontento/circleci-matrix/master/src/circleci-matrix.sh -o ~/.local/bin/circleci-matrix
+    - chmod +x ~/.local/bin/circleci-matrix
 test:
   override:
-    - mkdir $CIRCLE_TEST_REPORTS/busted
-    - busted -c -o junit spec > $CIRCLE_TEST_REPORTS/busted/dilemma.xml
-  post:
-    - luacov -c=spec/.luacov
-    - bash <(curl -s https://codecov.io/bash)
+    - circleci-matrix:
+        parallel: true
+
