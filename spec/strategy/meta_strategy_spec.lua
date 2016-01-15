@@ -26,7 +26,7 @@ describe('meta strategy', function()
       function() return 'silent' end
     }
 
-    local strategy = MetaStrategy(unpack(strategies))
+    local strategy = MetaStrategy(table.unpack(strategies))
     
     assert.same('confess', strategy(1, 10, {}))
   end)
