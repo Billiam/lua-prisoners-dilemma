@@ -1,4 +1,5 @@
 local MetaStrategy = require('lib.strategy.meta_strategy')
+local unpack = rawget(_G,'unpack') or rawget(table,'unpack')
 
 describe('meta strategy', function()
   it("passes arguments to all strategies", function()
@@ -26,7 +27,7 @@ describe('meta strategy', function()
       function() return 'silent' end
     }
 
-    local strategy = MetaStrategy(table.unpack(strategies))
+    local strategy = MetaStrategy(unpack(strategies))
     
     assert.same('confess', strategy(1, 10, {}))
   end)
