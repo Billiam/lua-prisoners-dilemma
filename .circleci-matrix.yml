@@ -1,8 +1,8 @@
 env:
-  - LUA='Lua5.1'
-  - LUA='Lua5.2'
-  - LUA='Lua5.3'
-  - LUA='LuaJIT2.0'
+  - LUA=Lua5.1
+  - LUA=Lua5.2
+  - LUA=Lua5.3
+  - LUA=LuaJIT2.0
 
 command:
   - bin/lua_install.sh
