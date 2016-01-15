@@ -5,7 +5,7 @@ env:
   - LUA=LuaJIT2.0
 
 command:
-  - bin/lua_install.sh
+  - LUA="$LUA" bin/lua_install.sh
   - sudo apt-get install libphysfs-dev
   - sudo luarocks install busted
   - sudo luarocks install luasec OPENSSL_LIBDIR=/usr/lib/x86_64-linux-gnu/
