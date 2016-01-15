@@ -4,17 +4,13 @@ env:
   - LUA='Lua 5.3'
   - LUA='LuaJIT 2.0'
 
-dependencies:
-  pre:
-    - bin/lua_install.sh
-    - sudo apt-get install libphysfs-dev
-    - sudo luarocks install busted
-    - sudo luarocks install luasec OPENSSL_LIBDIR=/usr/lib/x86_64-linux-gnu/
-    - sudo luarocks install luacov
-test:
-  override:
-    - mkdir $CIRCLE_TEST_REPORTS/busted
-    - busted -c -o junit spec > $CIRCLE_TEST_REPORTS/busted/dilemma.xml
-  post:
-    - luacov -c=spec/.luacov
-    - bash <(curl -s https://codecov.io/bash)
+command:
+  - bin/lua_install.sh
+  - sudo apt-get install libphysfs-dev
+  - sudo luarocks install busted
+  - sudo luarocks install luasec OPENSSL_LIBDIR=/usr/lib/x86_64-linux-gnu/
+  - sudo luarocks install luacov
+  - mkdir -p $CIRCLE_TEST_REPORTS/$LUA/busted
+  - busted -c -o junit spec > "$CIRCLE_TEST_REPORTS/$LUA/busted/dilemma.xml"
+  - luacov -c=spec/.luacov
+  - bash <(curl -s https://codecov.io/bash) -e LUA
